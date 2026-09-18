@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ファクトシート — 常滑市飛香台2丁目 候補地（事業用貸地）</title>
 <style>
   @page { size: A4 landscape; margin: 6mm; }
@@ -72,6 +73,46 @@
   .no-print button { background: #d4a843; color: #fff; border: none; padding: 6px 20px; border-radius: 4px; font-size: 12px; font-weight: 700; cursor: pointer; margin-left: 8px; }
   .spacer { height: 44px; }
   @media print { .no-print, .spacer { display: none !important; } }
+
+  /* スマホではA4横の印刷レイアウトを縦長の閲覧レイアウトへ切り替える */
+  @media screen and (max-width: 760px) {
+    html, body { width: 100%; height: auto; min-height: 100%; overflow-x: hidden; }
+    body { background: #f4f4f2; font-size: 13px; line-height: 1.6; }
+    .spacer { height: 48px; }
+    .page { width: 100%; height: auto; min-height: 0; margin: 0; box-shadow: none; overflow: visible; }
+    .main { display: block; min-height: 0; }
+    .left, .right { width: 100%; border: 0; display: block; }
+    .left { padding: 10px; }
+    .photo-top, .photo-bottom { width: 100%; height: auto; min-height: 0; aspect-ratio: 16 / 9; margin-bottom: 8px; }
+    .photo-top img, .photo-top video, .photo-bottom img { width: 100%; height: 100%; object-fit: cover; }
+    .right { padding: 0 10px 10px; }
+    .type-price { padding: 10px 8px 8px; }
+    .type-badge { font-size: 12px; padding: 3px 12px; letter-spacing: 2px; }
+    .price { font-size: 25px; }
+    .highlights, .info-area, .law-info { margin-left: 0; margin-right: 0; padding-left: 8px; padding-right: 8px; }
+    .highlights { font-size: 11px; line-height: 1.5; }
+    .tbl { font-size: 12px; table-layout: fixed; }
+    .tbl th { width: 74px; padding: 6px 5px; }
+    .tbl td { padding: 6px 5px; overflow-wrap: anywhere; word-break: break-word; }
+    .tbl td .small { font-size: 11px; }
+    .deal-bar { margin: 8px 0 0; }
+    .deal-cell { padding: 6px 3px; }
+    .deal-label { font-size: 10px; }
+    .deal-value { font-size: 12px; }
+    .bottom-area { margin: 8px 0 0; display: block; }
+    .bottom-map { min-height: 190px; margin-bottom: 8px; }
+    .nearby { font-size: 11px; }
+    .nearby-title { font-size: 11px; padding: 3px 6px; }
+    .nearby-item { padding: 3px 4px; }
+    .footer-note { font-size: 11px; line-height: 1.6; padding: 10px 12px; text-align: left; }
+    .footer { display: block; padding: 12px; }
+    .footer img { max-width: 150px; height: auto !important; margin-bottom: 8px; }
+    .footer-company { font-size: 11px; line-height: 1.7; }
+    .footer-tel { margin-top: 8px; font-size: 20px; text-align: left; white-space: nowrap; }
+    .no-print { padding: 8px 10px; }
+    .no-print span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; }
+    .no-print button { flex-shrink: 0; padding: 7px 10px; font-size: 11px; }
+  }
 </style>
 </head>
 <body>
@@ -89,10 +130,10 @@
       <div class="photo-top">
         <div class="photo-label photo-label-screen">現地俯瞰動画</div>
         <div class="photo-label photo-label-print">敷地俯瞰イメージ</div>
-        <video autoplay loop muted playsinline preload="auto">
-          <source src="動画/俯瞰動画_loop.mp4" type="video/mp4">
+        <video autoplay loop muted playsinline controls preload="metadata" poster="../assets/asukadai-ba-after.jpg">
+          <source src="../assets/asukadai-loop.mp4" type="video/mp4">
         </video>
-        <img class="print-only" src="photos/after_完成イメージ.jpg" alt="俯瞰イメージ">
+        <img class="print-only" src="../assets/asukadai-ba-after.jpg" alt="俯瞰イメージ">
       </div>
       <div class="photo-bottom">
         <div class="photo-label">航空写真</div>

@@ -130,6 +130,14 @@
     letter-spacing: 0.1em;
     font-weight: 600;
   }
+  .site-card-actions { display: flex; gap: 6px; margin-top: 10px; }
+  .site-card-actions a {
+    flex: 1; min-height: 44px; display: flex; align-items: center; justify-content: center;
+    padding: 7px 8px; border: 1px solid var(--gold); border-radius: 4px;
+    color: var(--text); background: #fff; text-decoration: none; font-size: 11px; line-height: 1.35;
+  }
+  .site-card-actions a:first-child { background: var(--gold); color: #fff; }
+  .site-card-actions a:hover { filter: brightness(0.96); }
 
   #map { width: 100%; height: 100%; background: #e9e4d8; }
 
@@ -225,6 +233,8 @@
     .iw { width: min(290px, calc(100vw - 70px)); max-height: calc(100vh - 170px); overflow-y: auto; -webkit-overflow-scrolling: touch; }
     .iw-photo { height: 135px; }
     .iw-docs a { text-decoration: none; font-size: 13px; }
+    .site-card-actions { gap: 8px; }
+    .site-card-actions a { font-size: 12px; }
   }
 </style>
 </head>
@@ -526,6 +536,10 @@
         <span class="title">${s.title}</span>
         <div class="meta">${s.subtitle}</div>
         <span class="status">${s.status}</span>
+        <div class="site-card-actions">
+          <a href="${s.folder}/detail.html?site=${s.id}" onclick="event.stopPropagation()">詳細を見る</a>
+          <a href="${s.folder}/environment.html?site=${s.id}" onclick="event.stopPropagation()">周辺環境調査</a>
+        </div>
       </div>
     `).join('');
   }

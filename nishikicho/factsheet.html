@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ファクトシート — 常滑市錦町4丁目 貸地（屋内テニスコート想定）</title>
 <style>
   @page { size: A4 landscape; margin: 6mm; }
@@ -78,6 +79,44 @@
   .no-print button { background: #d4a843; color: #fff; border: none; padding: 6px 20px; border-radius: 4px; font-size: 12px; font-weight: 700; cursor: pointer; margin-left: 8px; }
   .spacer { height: 44px; }
   @media print { .no-print, .spacer { display: none !important; } }
+
+  @media screen and (max-width: 760px) {
+    html, body { width: 100%; height: auto; min-height: 100%; overflow-x: hidden; }
+    body { background: #f4f4f2; font-size: 13px; line-height: 1.6; }
+    .spacer { height: 48px; }
+    .page { width: 100%; height: auto; min-height: 0; margin: 0; box-shadow: none; overflow: visible; }
+    .main { display: block; min-height: 0; }
+    .left, .right { width: 100%; border: 0; display: block; }
+    .left { padding: 10px; }
+    .photo-row { height: 150px; gap: 5px; }
+    .photo-main { height: 235px; min-height: 0; margin-top: 8px; }
+    .right { padding: 0 10px 10px; }
+    .type-price { padding: 10px 8px 8px; }
+    .type-badge { font-size: 12px; padding: 3px 12px; letter-spacing: 2px; }
+    .price { font-size: 25px; }
+    .highlights, .info-area, .law-info { margin-left: 0; margin-right: 0; padding-left: 8px; padding-right: 8px; }
+    .highlights { font-size: 11px; line-height: 1.5; }
+    .tbl { font-size: 12px; table-layout: fixed; }
+    .tbl th { width: 74px; padding: 6px 5px; }
+    .tbl td { padding: 6px 5px; overflow-wrap: anywhere; word-break: break-word; }
+    .deal-bar { margin: 8px 0 0; }
+    .deal-cell { padding: 6px 3px; }
+    .deal-label { font-size: 10px; }
+    .deal-value { font-size: 12px; }
+    .bottom-area { margin: 8px 0 0; display: block; }
+    .bottom-map { min-height: 190px; margin-bottom: 8px; }
+    .nearby { font-size: 11px; }
+    .nearby-title { font-size: 11px; padding: 3px 6px; }
+    .nearby-item { padding: 3px 4px; }
+    .footer-note { font-size: 11px; line-height: 1.6; padding: 10px 12px; text-align: left; }
+    .footer { display: block; padding: 12px; }
+    .footer img { max-width: 150px; height: auto !important; margin-bottom: 8px; }
+    .footer-company { font-size: 11px; line-height: 1.7; }
+    .footer-tel { margin-top: 8px; font-size: 20px; text-align: left; white-space: nowrap; }
+    .no-print { padding: 8px 10px; }
+    .no-print span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; }
+    .no-print button { flex-shrink: 0; padding: 7px 10px; font-size: 11px; }
+  }
 </style>
 </head>
 <body>
@@ -100,20 +139,20 @@
       <div class="photo-row">
         <div class="photo-cell">
           <div class="photo-label">航空写真（赤枠）</div>
-          <img src="photos/photo1_航空写真（赤枠）.jpg" alt="航空写真">
+          <img src="../assets/nishikicho.jpg" alt="航空写真">
         </div>
         <div class="photo-cell">
           <div class="photo-label">現地</div>
-          <img src="photos/photo2_現地_東向き.jpg" alt="現地">
+          <img src="../assets/nishikicho-current.jpg" alt="現地">
         </div>
         <div class="photo-cell">
           <div class="photo-label">南側道路から</div>
-          <img src="photos/photo3_南側道路から.jpg" alt="南側道路から">
+          <img src="../assets/nishikicho-current.jpg" alt="南側道路から">
         </div>
       </div>
       <div class="photo-main">
         <div class="photo-label">航空写真（Google）</div>
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=34.895986,136.840665&zoom=18&size=800x520&maptype=satellite&markers=color:red%7C34.895986,136.840665&key=AIzaSyAblGtLUEhqN6raMa1thk4yX1ZFwNw_3V4" alt="航空写真">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=34.895986,136.840665&zoom=18&size=800x520&maptype=satellite&markers=color:red%7C34.895986,136.840665&key=AIzaSyAblGtLUEhqN6raMa1thk4yX1ZFwNw_3V4" alt="航空写真" onerror="this.onerror=null;this.src='../assets/nishikicho.jpg';this.alt='航空写真（代替画像）';">
       </div>
     </div>
 
