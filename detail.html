@@ -9,7 +9,7 @@
     :root{--ink:#171511;--paper:#f4f1ea;--gold:#b8944a;--muted:#6f6a61;--line:#dcd5c8;--blue:#38556b}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Yu Gothic",Meiryo,sans-serif}
     header{background:var(--ink);color:#fff;padding:15px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:10}
-    header img{width:185px;height:auto}.eyebrow{font-size:10px;letter-spacing:.16em;color:#d5c397;text-align:right}
+    header img{width:185px;height:auto;display:block}.brand-link{display:block;line-height:0}.eyebrow{font-size:10px;letter-spacing:.16em;color:#d5c397;text-align:right}
     main{max-width:1120px;margin:auto;padding:30px 24px 60px}.intro{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(310px,.75fr);gap:28px;align-items:start}
     .media{background:#111;aspect-ratio:16/9;overflow:hidden}.media img,.media video{width:100%;height:100%;display:block;object-fit:cover}
     .panel{background:#fff;border-top:4px solid var(--gold);padding:28px}.kicker{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.15em}.panel h1{font-size:30px;line-height:1.35;margin:10px 0 12px}.lead{color:var(--muted);font-size:14px;line-height:1.85;margin:0}
@@ -22,7 +22,7 @@
 </head>
 <body>
   <header>
-    <img src="assets/kumazawa-logo.jpg" alt="熊沢建設株式会社">
+    <a class="brand-link" href="index.html" aria-label="3物件を選び直す"><img src="assets/kumazawa-logo-white.png" alt="熊沢建設株式会社"></a>
     <div class="eyebrow">企業誘致・出店支援 PROJECT TEAM<br>INTERACTIVE SITE BRIEF</div>
   </header>
   <main>
@@ -49,7 +49,7 @@
         <a class="btn" id="factLink">ファクトシート</a>
         <a class="btn environment" id="environmentLink">周辺環境調査</a>
         <a class="btn" id="mapLink" target="_blank" rel="noopener">Google マップで位置を見る</a>
-        <a class="btn secondary" href="index.html">3候補地の比較マップへ戻る</a>
+        <a class="btn secondary" href="index.html">3物件を選び直す</a>
       </div>
       <p class="note">ファクトシートで条件を把握し、周辺環境調査で現況と完成イメージ、立地・商圏の要点を確認できます。本ページはチーム確認用プロトタイプです。契約条件・法令・配置計画は、正式な調査と協議により変更となる場合があります。</p>
     </section>

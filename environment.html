@@ -8,17 +8,17 @@
   <style>
     :root{--ink:#171511;--paper:#f4f1ea;--gold:#b8944a;--blue:#38556b;--muted:#716b61;--line:#ded7cb;--white:#fff;--warn:#9a5c20}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Yu Gothic",Meiryo,sans-serif}
-    header{background:var(--ink);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:5}header img{width:180px;height:auto}.eyebrow{font-size:10px;letter-spacing:.16em;color:#d5c397;text-align:right}
+    header{background:var(--ink);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:5}header img{width:180px;height:auto;display:block}.brand-link{display:block;line-height:0}.eyebrow{font-size:10px;letter-spacing:.16em;color:#d5c397;text-align:right}
     main{max-width:1120px;margin:auto;padding:28px 22px 60px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.tabs a{padding:10px 13px;background:#fff;border:1px solid #bbb3a5;color:#403c37;text-decoration:none;font-size:12px;font-weight:700}.tabs a.active{background:var(--blue);border-color:var(--blue);color:#fff}
     .hero{display:grid;grid-template-columns:1.1fr .9fr;background:#fff}.map{min-height:430px;border:0;width:100%;background:#e5e1d8}.summary{padding:30px;border-top:5px solid var(--gold)}.kicker{font-size:11px;color:var(--gold);font-weight:800;letter-spacing:.15em}.summary h1{font-size:29px;line-height:1.35;margin:10px 0}.lead{font-size:14px;line-height:1.85;color:var(--muted)}.status{display:inline-block;margin-top:12px;padding:7px 10px;background:#f4ead7;color:var(--warn);font-size:11px;font-weight:700}
-    .comparison{margin-top:20px;background:#fff;padding:24px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:14px}.section-head h2{font-size:20px;margin:0}.section-head p{font-size:11px;color:var(--muted);margin:0;line-height:1.6;text-align:right}.compare-stage{--pos:50%;position:relative;overflow:hidden;aspect-ratio:16/7;background:#d9d5cd;touch-action:none}.compare-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;pointer-events:none}.compare-stage .before{clip-path:polygon(0 0,var(--pos) 0,var(--pos) 100%,0 100%)}.compare-line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 0 1px rgba(0,0,0,.15);pointer-events:none}.compare-handle{position:absolute;left:var(--pos);top:50%;width:44px;height:44px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;transform:translate(-50%,-50%);font-weight:900;box-shadow:0 2px 12px rgba(0,0,0,.28);pointer-events:none}.compare-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}.compare-label{position:absolute;top:12px;padding:7px 10px;color:#fff;font-size:11px;font-weight:800;letter-spacing:.05em;background:rgba(23,21,17,.78);pointer-events:none}.compare-label.left{left:12px}.compare-label.right{right:12px;background:rgba(184,148,74,.94)}.compare-caption{margin:11px 0 0;color:var(--muted);font-size:11px;line-height:1.7}
+    .comparison{margin-top:20px;background:#fff;padding:24px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:14px}.section-head h2{font-size:20px;margin:0}.section-head p{font-size:11px;color:var(--muted);margin:0;line-height:1.6;text-align:right}.compare-stage{--pos:50%;position:relative;overflow:hidden;aspect-ratio:16/7;background:#d9d5cd;touch-action:none;user-select:none}.compare-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;pointer-events:none}.compare-stage .before{clip-path:polygon(0 0,var(--pos) 0,var(--pos) 100%,0 100%)}.compare-line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 0 1px rgba(0,0,0,.15);pointer-events:none}.compare-handle{position:absolute;left:var(--pos);top:50%;width:44px;height:44px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;transform:translate(-50%,-50%);font-weight:900;box-shadow:0 2px 12px rgba(0,0,0,.28);pointer-events:none}.compare-range{position:absolute;inset:0;z-index:2;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:none;-webkit-appearance:none;appearance:none}.compare-label{position:absolute;top:12px;padding:7px 10px;color:#fff;font-size:11px;font-weight:800;letter-spacing:.05em;background:rgba(23,21,17,.78);pointer-events:none}.compare-label.left{left:12px}.compare-label.right{right:12px;background:rgba(184,148,74,.94)}.compare-caption{margin:11px 0 0;color:var(--muted);font-size:11px;line-height:1.7}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}.card{background:#fff;padding:22px;border-top:3px solid var(--gold)}.card h2{font-size:16px;margin:0 0 13px}.card ul{margin:0;padding-left:18px}.card li{font-size:13px;line-height:1.75;margin:5px 0}.source{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}
-    .actions{margin-top:20px;background:#fff;padding:22px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;padding:12px 16px;background:var(--gold);color:#fff;text-decoration:none;font-size:13px;font-weight:700}.btn.secondary{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+    .actions{margin-top:20px;background:#fff;padding:22px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;padding:12px 16px;background:var(--gold);color:#fff;text-decoration:none;font-size:13px;font-weight:700}.btn.secondary{background:#fff;color:var(--blue);border:1px solid var(--blue)}.btn.back{background:#fff;color:var(--muted);border:1px solid #bbb3a5}
     @media(max-width:760px){header{padding:12px 15px}header img{width:145px}.eyebrow{display:none}main{padding:16px 13px 40px}.hero{grid-template-columns:1fr}.map{min-height:330px}.summary{padding:22px}.summary h1{font-size:24px}.comparison{padding:16px}.section-head{display:block}.section-head p{text-align:left;margin-top:7px}.compare-stage{aspect-ratio:4/3}.compare-label{top:8px;padding:6px 8px;font-size:10px}.compare-label.left{left:8px}.compare-label.right{right:8px}.grid{grid-template-columns:1fr}.tabs a{flex:1;text-align:center;min-width:100px}}
   </style>
 </head>
 <body>
-  <header><img src="assets/kumazawa-logo.jpg" alt="熊沢建設株式会社"><div class="eyebrow">企業誘致・出店支援 PROJECT TEAM<br>AREA &amp; MARKET BRIEF</div></header>
+  <header><a class="brand-link" href="index.html" aria-label="3物件を選び直す"><img src="assets/kumazawa-logo-white.png" alt="熊沢建設株式会社"></a><div class="eyebrow">企業誘致・出店支援 PROJECT TEAM<br>AREA &amp; MARKET BRIEF</div></header>
   <main>
     <nav class="tabs" aria-label="候補地切り替え">
       <a data-site="asukadai" href="environment.html?site=asukadai">01 飛香台2丁目</a>
@@ -41,14 +41,15 @@
         <span class="compare-label right" id="afterLabel"></span>
         <span class="compare-line"></span>
         <span class="compare-handle" aria-hidden="true">↔</span>
-        <input class="compare-range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="現況と完成イメージの比較位置">
+        <input class="compare-range" id="compareRange" type="range" min="0" max="100" step="0.1" value="50" aria-label="現況と完成イメージの比較位置">
       </div>
       <p class="compare-caption" id="compareCaption"></p>
     </section>
     <section class="grid" id="cards"></section>
     <section class="actions">
-      <a class="btn" id="detailLink">候補地の詳細へ戻る</a>
-      <a class="btn secondary" href="index.html">3候補地の比較マップ</a>
+      <a class="btn" id="detailLink">候補地の詳細を見る</a>
+      <a class="btn secondary" href="index.html">3物件を選び直す</a>
+      <a class="btn back" id="backLink" href="index.html">前の画面に戻る</a>
       <a class="btn secondary" id="googleLink" target="_blank" rel="noopener">Google マップで開く</a>
     </section>
     <p class="source">本資料はプロトタイプです。距離・人口・競合・都市計画等は、現地調査、公式統計、行政照会により最終確認します。調査済みと未調査の情報を区別して表示しています。</p>
@@ -67,9 +68,17 @@
     document.getElementById('afterImage').src=site.after;document.getElementById('afterImage').alt=site.afterLabel;
     document.getElementById('beforeLabel').textContent=site.beforeLabel;document.getElementById('afterLabel').textContent=site.afterLabel;document.getElementById('compareCaption').textContent=site.compareCaption;
     const compareStage=document.getElementById('compareStage');const compareRange=document.getElementById('compareRange');
-    const updateComparison=()=>compareStage.style.setProperty('--pos',`${compareRange.value}%`);compareRange.addEventListener('input',updateComparison);updateComparison();
+    const updateComparison=()=>{compareStage.style.setProperty('--pos',`${compareRange.value}%`);compareRange.setAttribute('aria-valuetext',`${Math.round(Number(compareRange.value))}%`)};
+    const setComparisonFromClientX=(clientX)=>{const rect=compareStage.getBoundingClientRect();const value=Math.max(0,Math.min(100,((clientX-rect.left)/rect.width)*100));compareRange.value=String(value);updateComparison()};
+    let dragging=false;
+    compareStage.addEventListener('pointerdown',event=>{if(event.pointerType==='mouse'&&event.button!==0)return;dragging=true;compareStage.setPointerCapture?.(event.pointerId);setComparisonFromClientX(event.clientX);event.preventDefault()});
+    compareStage.addEventListener('pointermove',event=>{if(!dragging)return;setComparisonFromClientX(event.clientX);event.preventDefault()});
+    const stopComparisonDrag=event=>{if(!dragging)return;dragging=false;if(event?.pointerId!==undefined&&compareStage.hasPointerCapture?.(event.pointerId))compareStage.releasePointerCapture(event.pointerId)};
+    compareStage.addEventListener('pointerup',stopComparisonDrag);compareStage.addEventListener('pointercancel',stopComparisonDrag);compareStage.addEventListener('lostpointercapture',()=>{dragging=false});
+    compareRange.addEventListener('input',updateComparison);updateComparison();
     document.getElementById('cards').innerHTML=site.cards.map(([title,items])=>`<article class="card"><h2>${title}</h2><ul>${items.map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('');
     document.getElementById('detailLink').href=`detail.html?site=${id}`;document.getElementById('googleLink').href=`https://www.google.com/maps/search/?api=1&query=${site.lat},${site.lng}`;
+    const backLink=document.getElementById('backLink');backLink.addEventListener('click',event=>{if(window.history.length>1){event.preventDefault();window.history.back()}});
     document.title=`${site.title}｜周辺環境調査`;
     function initEnvironmentMap(){
       const map=new google.maps.Map(document.getElementById('map'),{center:{lat:site.lat,lng:site.lng},zoom:15,mapTypeId:'roadmap',mapTypeControl:true,mapTypeControlOptions:{mapTypeIds:['roadmap','satellite']},streetViewControl:false,fullscreenControl:true});
