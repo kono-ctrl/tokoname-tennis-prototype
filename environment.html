@@ -10,10 +10,11 @@
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Yu Gothic",Meiryo,sans-serif}
     header{background:var(--ink);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:5}header img{width:180px;height:auto}.eyebrow{font-size:10px;letter-spacing:.16em;color:#d5c397;text-align:right}
     main{max-width:1120px;margin:auto;padding:28px 22px 60px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.tabs a{padding:10px 13px;background:#fff;border:1px solid #bbb3a5;color:#403c37;text-decoration:none;font-size:12px;font-weight:700}.tabs a.active{background:var(--blue);border-color:var(--blue);color:#fff}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;background:#fff}.map{min-height:430px;border:0;width:100%}.summary{padding:30px;border-top:5px solid var(--gold)}.kicker{font-size:11px;color:var(--gold);font-weight:800;letter-spacing:.15em}.summary h1{font-size:29px;line-height:1.35;margin:10px 0}.lead{font-size:14px;line-height:1.85;color:var(--muted)}.status{display:inline-block;margin-top:12px;padding:7px 10px;background:#f4ead7;color:var(--warn);font-size:11px;font-weight:700}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;background:#fff}.map{min-height:430px;border:0;width:100%;background:#e5e1d8}.summary{padding:30px;border-top:5px solid var(--gold)}.kicker{font-size:11px;color:var(--gold);font-weight:800;letter-spacing:.15em}.summary h1{font-size:29px;line-height:1.35;margin:10px 0}.lead{font-size:14px;line-height:1.85;color:var(--muted)}.status{display:inline-block;margin-top:12px;padding:7px 10px;background:#f4ead7;color:var(--warn);font-size:11px;font-weight:700}
+    .comparison{margin-top:20px;background:#fff;padding:24px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:14px}.section-head h2{font-size:20px;margin:0}.section-head p{font-size:11px;color:var(--muted);margin:0;line-height:1.6;text-align:right}.compare-stage{--pos:50%;position:relative;overflow:hidden;aspect-ratio:16/7;background:#d9d5cd;touch-action:none}.compare-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;pointer-events:none}.compare-stage .before{clip-path:polygon(0 0,var(--pos) 0,var(--pos) 100%,0 100%)}.compare-line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 0 1px rgba(0,0,0,.15);pointer-events:none}.compare-handle{position:absolute;left:var(--pos);top:50%;width:44px;height:44px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;transform:translate(-50%,-50%);font-weight:900;box-shadow:0 2px 12px rgba(0,0,0,.28);pointer-events:none}.compare-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}.compare-label{position:absolute;top:12px;padding:7px 10px;color:#fff;font-size:11px;font-weight:800;letter-spacing:.05em;background:rgba(23,21,17,.78);pointer-events:none}.compare-label.left{left:12px}.compare-label.right{right:12px;background:rgba(184,148,74,.94)}.compare-caption{margin:11px 0 0;color:var(--muted);font-size:11px;line-height:1.7}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}.card{background:#fff;padding:22px;border-top:3px solid var(--gold)}.card h2{font-size:16px;margin:0 0 13px}.card ul{margin:0;padding-left:18px}.card li{font-size:13px;line-height:1.75;margin:5px 0}.source{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}
     .actions{margin-top:20px;background:#fff;padding:22px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;padding:12px 16px;background:var(--gold);color:#fff;text-decoration:none;font-size:13px;font-weight:700}.btn.secondary{background:#fff;color:var(--blue);border:1px solid var(--blue)}
-    @media(max-width:760px){header{padding:12px 15px}header img{width:145px}.eyebrow{display:none}main{padding:16px 13px 40px}.hero{grid-template-columns:1fr}.map{min-height:330px}.summary{padding:22px}.summary h1{font-size:24px}.grid{grid-template-columns:1fr}.tabs a{flex:1;text-align:center;min-width:100px}}
+    @media(max-width:760px){header{padding:12px 15px}header img{width:145px}.eyebrow{display:none}main{padding:16px 13px 40px}.hero{grid-template-columns:1fr}.map{min-height:330px}.summary{padding:22px}.summary h1{font-size:24px}.comparison{padding:16px}.section-head{display:block}.section-head p{text-align:left;margin-top:7px}.compare-stage{aspect-ratio:4/3}.compare-label{top:8px;padding:6px 8px;font-size:10px}.compare-label.left{left:8px}.compare-label.right{right:8px}.grid{grid-template-columns:1fr}.tabs a{flex:1;text-align:center;min-width:100px}}
   </style>
 </head>
 <body>
@@ -25,8 +26,24 @@
       <a data-site="nishikicho" href="environment.html?site=nishikicho">03 錦町4丁目</a>
     </nav>
     <section class="hero">
-      <iframe class="map" id="map" title="候補地周辺地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map" id="map" role="img" aria-label="候補地周辺地図"></div>
       <div class="summary"><div class="kicker">周辺環境調査</div><h1 id="title"></h1><p class="lead" id="lead"></p><span class="status" id="status"></span></div>
+    </section>
+    <section class="comparison">
+      <div class="section-head">
+        <h2 id="compareTitle">現況 ⇔ 完成イメージ</h2>
+        <p>画像上を左右にスライドして比較できます</p>
+      </div>
+      <div class="compare-stage" id="compareStage">
+        <img id="afterImage" alt="">
+        <img class="before" id="beforeImage" alt="">
+        <span class="compare-label left" id="beforeLabel"></span>
+        <span class="compare-label right" id="afterLabel"></span>
+        <span class="compare-line"></span>
+        <span class="compare-handle" aria-hidden="true">↔</span>
+        <input class="compare-range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="現況と完成イメージの比較位置">
+      </div>
+      <p class="compare-caption" id="compareCaption"></p>
     </section>
     <section class="grid" id="cards"></section>
     <section class="actions">
@@ -38,17 +55,27 @@
   </main>
   <script>
     const sites={
-      asukadai:{title:'常滑市飛香台2丁目 候補地',lat:34.894639,lng:136.850139,status:'既存の周辺環境調査を反映',lead:'立地・商圏・競合・技術上の検討事項を、出店判断の順番に整理しています。',cards:[['アクセス',['常滑ICから車で約3分','名鉄「常滑」駅から徒歩約24分','住宅地の中央、北条公園・旧鉄道緑地に隣接']],['商圏・ターゲット',['5km圏人口 約60,000人（既存資料の推計）','5km圏小学生 約2,300名（既存資料の推計）','通学・送迎・仕事帰りの利用動線を検討']],['要精査項目',['敷地中央の擁壁と段差への設計対応','地区計画届出と建築・色彩条件','競合施設、人口、等時間商圏の再調査']]]},
-      hironouchi:{title:'常滑市字広内12番 貸地',lat:34.893427,lng:136.844954,status:'簡易版／正式な周辺環境調査は未実施',lead:'現時点で確認できる位置と物件条件を示し、次に調べる内容を明確にしています。',cards:[['アクセス',['名鉄「常滑」駅から徒歩約15分','準工業地域','現況・入退去時期は元付へ要確認']],['次に調べる項目',['10分・15分等時間商圏の人口と年齢構成','送迎車両の進入・退出動線','近隣の屋内テニス・スポーツ施設']],['判断前の確認',['騒音・夜間照明の近隣影響','駐車台数と他用途との共用条件','借地期間と投資回収期間の適合']]]},
-      nishikicho:{title:'常滑市錦町4丁目 貸地',lat:34.895986,lng:136.840665,status:'簡易版／正式な周辺環境調査は未実施',lead:'広い敷地と三方道路の利点を踏まえ、解体・動線・商圏調査の順序を整理しています。',cards:[['アクセス',['東・南・北の三方道路','準工業地域','敷地約1,072坪']],['次に調べる項目',['主要道路からの視認性と右左折進入','10分・15分等時間商圏の人口と年齢構成','競合施設と商業集積との関係']],['判断前の確認',['既存建物の解体・更地引渡し条件','造成・地盤・基礎条件','複合利用時の駐車場と車両動線']]]}
+      asukadai:{title:'常滑市飛香台2丁目 候補地',lat:34.894639,lng:136.850139,status:'既存の周辺環境調査を反映',lead:'立地・商圏・競合・技術上の検討事項を、出店判断の順番に整理しています。',before:'assets/asukadai-ba-before.jpg',after:'assets/asukadai-ba-after.jpg',beforeLabel:'BEFORE：現況の参考パース',afterLabel:'AFTER：建築イメージ',compareCaption:'BEFORE／AFTERともに参考パースです。建物の形状・配置・外観は確定案ではありません。',cards:[['アクセス',['常滑ICから車で約3分','名鉄「常滑」駅から徒歩約24分','住宅地の中央、北条公園・旧鉄道緑地に隣接']],['商圏・ターゲット',['5km圏人口 約60,000人（既存資料の推計）','5km圏小学生 約2,300名（既存資料の推計）','通学・送迎・仕事帰りの利用動線を検討']],['要精査項目',['敷地中央の擁壁と段差への設計対応','地区計画届出と建築・色彩条件','競合施設、人口、等時間商圏の再調査']]]},
+      hironouchi:{title:'常滑市字広内12番 貸地',lat:34.893427,lng:136.844954,status:'簡易版／正式な周辺環境調査は未実施',lead:'現時点で確認できる位置と物件条件を示し、次に調べる内容を明確にしています。',before:'assets/hironouchi-current.jpg',after:'assets/hironouchi.jpg',beforeLabel:'BEFORE：現況',afterLabel:'AFTER：建築イメージ',compareCaption:'完成側は検討用の合成イメージです。建物の形状・配置・外観は確定案ではありません。',cards:[['アクセス',['名鉄「常滑」駅から徒歩約15分','準工業地域','現況・入退去時期は元付へ要確認']],['次に調べる項目',['10分・15分等時間商圏の人口と年齢構成','送迎車両の進入・退出動線','近隣の屋内テニス・スポーツ施設']],['判断前の確認',['騒音・夜間照明の近隣影響','駐車台数と他用途との共用条件','借地期間と投資回収期間の適合']]]},
+      nishikicho:{title:'常滑市錦町4丁目 貸地',lat:34.895986,lng:136.840665,status:'簡易版／正式な周辺環境調査は未実施',lead:'広い敷地と三方道路の利点を踏まえ、解体・動線・商圏調査の順序を整理しています。',before:'assets/nishikicho-current.jpg',after:'assets/nishikicho.jpg',beforeLabel:'現況写真',afterLabel:'敷地範囲・航空写真',compareTitle:'現況 ⇔ 敷地範囲',compareCaption:'本候補地は完成イメージ未作成のため、現況写真と航空写真の敷地範囲を比較表示しています。',cards:[['アクセス',['東・南・北の三方道路','準工業地域','敷地約1,072坪']],['次に調べる項目',['主要道路からの視認性と右左折進入','10分・15分等時間商圏の人口と年齢構成','競合施設と商業集積との関係']],['判断前の確認',['既存建物の解体・更地引渡し条件','造成・地盤・基礎条件','複合利用時の駐車場と車両動線']]]}
     };
     const requested=new URLSearchParams(location.search).get('site');const id=sites[requested]?requested:'asukadai';const site=sites[id];
     document.querySelectorAll('[data-site]').forEach(a=>a.classList.toggle('active',a.dataset.site===id));
     document.getElementById('title').textContent=site.title;document.getElementById('lead').textContent=site.lead;document.getElementById('status').textContent=site.status;
-    document.getElementById('map').src=`https://www.google.com/maps?q=${site.lat},${site.lng}&z=15&output=embed`;
+    document.getElementById('compareTitle').textContent=site.compareTitle||'現況 ⇔ 完成イメージ';
+    document.getElementById('beforeImage').src=site.before;document.getElementById('beforeImage').alt=site.beforeLabel;
+    document.getElementById('afterImage').src=site.after;document.getElementById('afterImage').alt=site.afterLabel;
+    document.getElementById('beforeLabel').textContent=site.beforeLabel;document.getElementById('afterLabel').textContent=site.afterLabel;document.getElementById('compareCaption').textContent=site.compareCaption;
+    const compareStage=document.getElementById('compareStage');const compareRange=document.getElementById('compareRange');
+    const updateComparison=()=>compareStage.style.setProperty('--pos',`${compareRange.value}%`);compareRange.addEventListener('input',updateComparison);updateComparison();
     document.getElementById('cards').innerHTML=site.cards.map(([title,items])=>`<article class="card"><h2>${title}</h2><ul>${items.map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('');
     document.getElementById('detailLink').href=`detail.html?site=${id}`;document.getElementById('googleLink').href=`https://www.google.com/maps/search/?api=1&query=${site.lat},${site.lng}`;
     document.title=`${site.title}｜周辺環境調査`;
+    function initEnvironmentMap(){
+      const map=new google.maps.Map(document.getElementById('map'),{center:{lat:site.lat,lng:site.lng},zoom:15,mapTypeId:'roadmap',mapTypeControl:true,mapTypeControlOptions:{mapTypeIds:['roadmap','satellite']},streetViewControl:false,fullscreenControl:true});
+      new google.maps.Marker({map,position:{lat:site.lat,lng:site.lng},title:site.title});
+    }
   </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAblGtLUEhqN6raMa1thk4yX1ZFwNw_3V4&amp;callback=initEnvironmentMap&amp;language=ja&amp;region=JP"></script>
 </body>
 </html>

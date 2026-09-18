@@ -47,12 +47,11 @@
       <h2>資料を続けて見る</h2>
       <div class="action-row">
         <a class="btn" id="factLink">ファクトシート</a>
-        <a class="btn secondary" id="proposalLink">出店提案資料</a>
         <a class="btn environment" id="environmentLink">周辺環境調査</a>
         <a class="btn" id="mapLink" target="_blank" rel="noopener">Google マップで位置を見る</a>
         <a class="btn secondary" href="index.html">3候補地の比較マップへ戻る</a>
       </div>
-      <p class="note">ファクトシートで条件を把握し、出店提案、周辺環境調査へ段階的に進めます。本ページはチーム確認用プロトタイプです。契約条件・法令・配置計画は、正式な調査と協議により変更となる場合があります。</p>
+      <p class="note">ファクトシートで条件を把握し、周辺環境調査で現況と完成イメージ、立地・商圏の要点を確認できます。本ページはチーム確認用プロトタイプです。契約条件・法令・配置計画は、正式な調査と協議により変更となる場合があります。</p>
     </section>
   </main>
   <script>
@@ -71,7 +70,6 @@
     document.getElementById('lead').textContent=site.lead;
     document.getElementById('facts').innerHTML=Object.entries(site.facts).map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('');
     document.getElementById('factLink').href=`${id}/factsheet.html`;
-    document.getElementById('proposalLink').href=`${id}/proposal.html`;
     document.getElementById('environmentLink').href=`environment.html?site=${id}`;
     document.getElementById('mapLink').href=`https://www.google.com/maps/search/?api=1&query=${site.lat},${site.lng}`;
     document.title=`${site.title}｜屋内テニス施設候補地`;
