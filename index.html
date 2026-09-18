@@ -142,7 +142,7 @@
     padding: 0 !important;
     max-width: 380px !important;
   }
-  .gm-style .gm-style-iw-d { overflow: hidden !important; padding: 0 !important; }
+  .gm-style .gm-style-iw-d { overflow: visible !important; padding: 0 !important; }
   .gm-style .gm-style-iw-tc::after { background: var(--panel) !important; border-top: 1px solid var(--gold); }
 
   .iw {
@@ -174,8 +174,10 @@
   .iw-docs a {
     color: #1565c0; text-decoration: underline;
     font-size: 12px;
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 4px 0;
+    display: flex; align-items: center; gap: 6px;
+    min-height: 44px; padding: 9px 11px;
+    background: #f7f5f0; border: 1px solid #d8d0c3;
+    border-radius: 4px;
   }
   .iw-docs a:hover { color: #0d47a1; }
   .iw-docs a::before { content: "▸"; color: #1565c0; font-size: 10px; }
@@ -218,8 +220,11 @@
     aside { order: 1; overflow: visible; padding: 20px 16px; border-right: 0; border-bottom: 1px solid var(--border); }
     #map { order: 2; height: 68vh; min-height: 520px; }
     .legend { display: none; }
-    .iw { width: min(290px, calc(100vw - 70px)); }
+    .gm-style .gm-style-iw-c { max-width: calc(100vw - 42px) !important; max-height: calc(100vh - 150px) !important; }
+    .gm-style .gm-style-iw-d { max-height: none !important; overflow: visible !important; }
+    .iw { width: min(290px, calc(100vw - 70px)); max-height: calc(100vh - 170px); overflow-y: auto; -webkit-overflow-scrolling: touch; }
     .iw-photo { height: 135px; }
+    .iw-docs a { text-decoration: none; font-size: 13px; }
   }
 </style>
 </head>
@@ -493,7 +498,7 @@
     const factsHtml = Object.entries(site.facts)
       .map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
     const docsHtml = site.docs
-      .map(d => `<li><a href="${site.folder}/${d.file}" target="_blank">${d.label}</a></li>`)
+      .map(d => `<li><a href="${site.folder}/${d.file}">${d.label}</a></li>`)
       .join('');
     const zipHtml = site.zip
       ? `<a class="iw-zip" href="${site.zip}" download>一式ZIPをダウンロード</a>`
