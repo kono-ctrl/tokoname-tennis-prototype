@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>株式会社ネクストコート 様｜常滑市 屋内テニス候補地マップ</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --panel: #ffffff;
+    --panel-2: #faf8f3;
+    --border: #e5e1d6;
+    --gold: #b8944a;
+    --gold-soft: #d9be7d;
+    --text: #1a1a1a;
+    --text-sub: #7a7468;
+    --red: #c8553d;
+    --blue: #4a6fa5;
+    --header-bg: #14120f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; font-family: 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif; background: var(--bg); color: var(--text); }
+  body { display: grid; grid-template-rows: auto 1fr; height: 100vh; overflow: hidden; }
+
+  header {
+    background: linear-gradient(180deg, #1a1815 0%, #14120f 100%);
+    border-bottom: 1px solid var(--gold);
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    position: relative;
+  }
+  header .brand-text h1 { color: #f5f2ea; }
+  header .brand-text .sub { color: #a8a096; }
+  header .header-meta { color: #a8a096; }
+  header::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    opacity: 0.4;
+  }
+  .brand { display: flex; align-items: center; gap: 22px; }
+  .brand-logo {
+    height: 32px;
+    width: auto;
+    display: block;
+    content: url("assets/kumazawa-logo.jpg");
+  }
+  .brand-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+  .brand-text h1 {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .brand-text h1 .gold { color: var(--gold); font-weight: 600; }
+  .brand-text .sub {
+    font-size: 10px;
+    color: var(--text-sub);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .header-meta {
+    font-size: 10px;
+    color: var(--text-sub);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: right;
+  }
+  .header-meta .line2 {
+    display: block;
+    font-size: 9px;
+    color: var(--gold);
+    margin-top: 2px;
+    letter-spacing: 0.22em;
+  }
+
+  main { display: grid; grid-template-columns: 340px 1fr; overflow: hidden; }
+
+  aside {
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 22px 20px;
+  }
+  .aside-heading { font-size: 10px; color: var(--gold); letter-spacing: 0.2em; font-weight: 700; margin-bottom: 12px; }
+  .aside-sub { font-size: 12px; color: var(--text-sub); margin-bottom: 20px; line-height: 1.8; }
+
+  .site-card {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .site-card:hover { border-color: var(--gold); transform: translateX(2px); box-shadow: 0 2px 8px rgba(184, 148, 74, 0.12); }
+  .site-card.active { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold) inset, 0 2px 12px rgba(184, 148, 74, 0.18); }
+  .site-card .num {
+    display: inline-block;
+    width: 22px; height: 22px;
+    line-height: 22px; text-align: center;
+    background: var(--gold); color: #fff;
+    border-radius: 50%; font-weight: 700; font-size: 11px;
+    margin-right: 8px;
+  }
+  .site-card .title { font-size: 13px; font-weight: 600; display: inline-block; vertical-align: middle; color: var(--text); }
+  .site-card .meta { font-size: 11px; color: var(--text-sub); margin-top: 8px; line-height: 1.6; }
+  .site-card .status {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    background: var(--gold);
+    color: #fff;
+    border-radius: 2px;
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  #map { width: 100%; height: 100%; background: #e9e4d8; }
+
+  /* InfoWindow内部スタイル（Google Maps default container覆い） */
+  .gm-style .gm-style-iw-c {
+    background: var(--panel) !important;
+    border: 1px solid var(--gold) !important;
+    border-radius: 6px !important;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18) !important;
+    padding: 0 !important;
+    max-width: 380px !important;
+  }
+  .gm-style .gm-style-iw-d { overflow: hidden !important; padding: 0 !important; }
+  .gm-style .gm-style-iw-tc::after { background: var(--panel) !important; border-top: 1px solid var(--gold); }
+
+  .iw {
+    color: var(--text);
+    font-family: inherit;
+    width: 340px;
+  }
+  .iw-photo {
+    width: 100%; height: 160px;
+    background: #000 center/cover no-repeat;
+    border-bottom: 1px solid var(--gold);
+  }
+  .iw-body { padding: 14px 18px 18px; }
+  .iw-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--gold); }
+  .iw-sub { font-size: 11px; color: var(--text-sub); margin-bottom: 12px; letter-spacing: 0.06em; }
+  .iw-facts {
+    display: grid; grid-template-columns: auto 1fr; gap: 4px 12px;
+    font-size: 11px; line-height: 1.6;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .iw-facts dt { color: var(--text-sub); }
+  .iw-facts dd { color: var(--text); font-weight: 500; }
+  .iw-docs-label { font-size: 10px; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 8px; }
+  .iw-docs { list-style: none; }
+  .iw-docs li { margin-bottom: 6px; }
+  .iw-docs a {
+    color: #1565c0; text-decoration: underline;
+    font-size: 12px;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 0;
+  }
+  .iw-docs a:hover { color: #0d47a1; }
+  .iw-docs a::before { content: "▸"; color: #1565c0; font-size: 10px; }
+  .iw-zip {
+    display: block;
+    margin-top: 14px; padding: 8px 12px;
+    background: var(--gold); color: #000;
+    text-align: center; font-size: 11px; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.1em;
+    border-radius: 2px;
+  }
+  .iw-zip:hover { background: var(--gold-soft); }
+
+  .legend {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    font-size: 11px;
+    color: var(--text);
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    display: flex; gap: 16px; align-items: center;
+  }
+  .legend .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+
+  @media (max-width: 760px) {
+    html, body { height: auto; min-height: 100%; }
+    body { display: block; overflow: auto; }
+    header { padding: 13px 14px; align-items: flex-start; }
+    .brand { width: 100%; gap: 12px; align-items: flex-start; }
+    .brand-logo { width: 132px; height: auto; flex: 0 0 auto; }
+    .brand-divider, .header-meta { display: none; }
+    .brand-text { min-width: 0; }
+    .brand-text h1 { font-size: 12px; letter-spacing: .04em; line-height: 1.45; }
+    .brand-text h1 .gold { display: block; }
+    .brand-text .sub { display: none; }
+    main { display: flex; flex-direction: column; overflow: visible; }
+    aside { order: 1; overflow: visible; padding: 20px 16px; border-right: 0; border-bottom: 1px solid var(--border); }
+    #map { order: 2; height: 68vh; min-height: 520px; }
+    .legend { display: none; }
+    .iw { width: min(290px, calc(100vw - 70px)); }
+    .iw-photo { height: 135px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img class="brand-logo" src="data:image/png;base64,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" alt="la CASA">
+    <div class="brand-divider"></div>
+    <div class="brand-text">
+      <h1>株式会社ネクストコート 様 <span class="gold">／ 常滑市 屋内テニス施設 候補地マップ</span></h1>
+      <div class="sub">Candidate Sites Overview — Tokoname City</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    屋内テニス施設 出店候補
+    <span class="line2">CONFIDENTIAL</span>
+  </div>
+</header>
+
+<main>
+  <aside>
+    <div class="aside-heading">CANDIDATE SITES</div>
+    <div class="aside-sub">
+      常滑市内で屋内テニス施設の出店候補として検討中の3案件を一覧表示しています。<br>
+      ピン／カードをクリックすると関連資料が開きます。
+    </div>
+    <div id="site-list"></div>
+  </aside>
+
+  <div style="position: relative;">
+    <div id="map"></div>
+    <div class="legend">
+      <span><span class="dot" style="background: #c8553d;"></span>候補地（番号順）</span>
+    </div>
+  </div>
+</main>
+
+<script>
+  // =============================================
+  //  候補地データ（追加はこの配列に1件足すだけ）
+  // =============================================
+  const sites = [
+    {
+      id: 'asukadai',
+      title: '常滑市飛香台2丁目 候補地',
+      subtitle: '屋内テニス候補｜整地済・事業用定期借地20年・常滑IC車3分',
+      lat: 34.894639,
+      lng: 136.850139,
+      photo: 'assets/asukadai.jpg',
+      folder: '.',
+      facts: {
+        '所在': '常滑西特定土地区画整理事業内（整地済）',
+        '用途地域': '準工業地域（建ぺい60%／容積200%）',
+        '契約形態': '事業用定期借地 20年（地主合意済）',
+        '賃料': '1坪900円／月（月額約54.3万円・年額約651万円）',
+        '保証金': '3ヶ月分（約163万円）',
+        '特記': '名鉄常滑線「常滑」駅 徒歩24分／常滑IC 車3分',
+      },
+      docs: [
+        { label: '候補地の詳細を見る', file: 'detail.html?site=asukadai' },
+        { label: '周辺環境調査まで見る', file: 'environment.html?site=asukadai' },
+      ],
+      status: '候補中',
+    },
+    {
+      id: 'hironouchi',
+      title: '常滑市字広内12番 貸地',
+      subtitle: '屋内テニス候補｜838坪・準工業・常滑駅徒歩15分',
+      lat: 34.893427,
+      lng: 136.844954,
+      photo: 'assets/hironouchi.jpg',
+      folder: '.',
+      facts: {
+        '面積': '2,765.58㎡（約838坪）',
+        '用途地域': '準工業地域（建ぺい60%／容積200%）',
+        '契約形態': '事業用借地 5年（期間相談可）',
+        '最寄駅': '名鉄常滑線「常滑」駅 徒歩15分',
+        '特記': '更地（一部貸出済 — 退去時期は元付に要確認）',
+      },
+      docs: [
+        { label: '候補地の詳細を見る', file: 'detail.html?site=hironouchi' },
+        { label: '周辺環境調査まで見る', file: 'environment.html?site=hironouchi' },
+      ],
+      status: '候補中',
+    },
+    {
+      id: 'nishikicho',
+      title: '常滑市錦町4丁目 貸地',
+      subtitle: '屋内テニス候補｜1,072坪・三方道路・既存パチンコ店解体協議',
+      lat: 34.895986,
+      lng: 136.840665,
+      photo: 'assets/nishikicho.jpg',
+      folder: '.',
+      facts: {
+        '面積': '3,546.45㎡（約1,072坪）',
+        '用途地域': '準工業地域（建ぺい60%／容積200%）',
+        '接道': '東 県道247号 約22m／南 公道14m／北 公道3m（三方道路）',
+        '契約形態': '借地（複合構成・既存建物解体は要協議）',
+        '特記': 'パチンコ店建物の解体・更地引渡しが成立条件',
+      },
+      docs: [
+        { label: '候補地の詳細を見る', file: 'detail.html?site=nishikicho' },
+        { label: '周辺環境調査まで見る', file: 'environment.html?site=nishikicho' },
+      ],
+      status: '候補中',
+    },
+  ];
+
+  // 参照ポイント（ランドマーク）
+  // Google Maps標準で「常滑」駅は表示されるため、追加ピンは不要
+  const landmarks = [];
+
+  // =============================================
+  //  地図初期化
+  // =============================================
+  let map;
+  const infoWindows = {};
+  const markers = {};
+
+  function initMap() {
+    // 常滑市内の候補地がすべて収まる範囲を初期表示
+    const bounds = new google.maps.LatLngBounds();
+    sites.forEach(s => bounds.extend({ lat: s.lat, lng: s.lng }));
+    landmarks.forEach(l => bounds.extend({ lat: l.lat, lng: l.lng }));
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: bounds.getCenter(),
+      zoom: 14,
+      mapTypeId: 'roadmap',
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+        mapTypeIds: ['roadmap', 'satellite'],
+      },
+      streetViewControl: false,
+      fullscreenControl: true,
+      styles: darkMapStyle,
+    });
+    map.fitBounds(bounds, 60);
+
+    // 候補地ピン
+    sites.forEach((site, i) => {
+      const marker = new google.maps.Marker({
+        position: { lat: site.lat, lng: site.lng },
+        map,
+        title: site.title,
+        label: {
+          text: String(i + 1),
+          color: '#fff',
+          fontWeight: '700',
+          fontSize: '12px',
+        },
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 14,
+          fillColor: '#c8553d',
+          fillOpacity: 1,
+          strokeColor: '#c9a961',
+          strokeWeight: 2,
+        },
+      });
+
+      const iw = new google.maps.InfoWindow({
+        content: renderInfoWindow(site),
+      });
+
+      marker.addListener('click', () => openSite(site.id));
+      infoWindows[site.id] = iw;
+      markers[site.id] = marker;
+    });
+
+    // ランドマークピン（江南厚生病院は赤枠で強調）
+    landmarks.forEach(l => {
+      // 赤枠の強調サークル（地図上で病院位置を視認しやすくする）
+      new google.maps.Circle({
+        map,
+        center: { lat: l.lat, lng: l.lng },
+        radius: 180,
+        strokeColor: '#dc2626',
+        strokeOpacity: 0.95,
+        strokeWeight: 3,
+        fillColor: '#dc2626',
+        fillOpacity: 0.08,
+        clickable: false,
+        zIndex: 1,
+      });
+
+      // 病院ラベル付きマーカー（赤枠ボックス）
+      new google.maps.Marker({
+        position: { lat: l.lat, lng: l.lng },
+        map,
+        title: l.name,
+        zIndex: 2,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 10,
+          fillColor: '#dc2626',
+          fillOpacity: 1,
+          strokeColor: '#fff',
+          strokeWeight: 2,
+        },
+        label: {
+          text: '駅',
+          color: '#fff',
+          fontSize: '11px',
+          fontWeight: '700',
+        },
+      });
+
+      // 病院名のテキストラベル（赤枠の白背景バッジ）
+      const labelDiv = document.createElement('div');
+      labelDiv.textContent = l.name;
+      labelDiv.style.cssText = [
+        'background:#fff',
+        'color:#dc2626',
+        'border:2px solid #dc2626',
+        'border-radius:4px',
+        'padding:3px 10px',
+        'font-size:11px',
+        'font-weight:700',
+        'white-space:nowrap',
+        'box-shadow:0 2px 6px rgba(0,0,0,0.35)',
+        'transform:translate(-50%, -34px)',
+        'pointer-events:none',
+        'letter-spacing:0.04em',
+      ].join(';');
+
+      class NameLabelOverlay extends google.maps.OverlayView {
+        constructor(position, content) { super(); this.position = position; this.content = content; }
+        onAdd() { this.getPanes().markerLayer.appendChild(this.content); }
+        draw() {
+          const proj = this.getProjection();
+          if (!proj) return;
+          const p = proj.fromLatLngToDivPixel(new google.maps.LatLng(this.position.lat, this.position.lng));
+          this.content.style.position = 'absolute';
+          this.content.style.left = p.x + 'px';
+          this.content.style.top = p.y + 'px';
+        }
+        onRemove() { this.content.remove(); }
+      }
+      const overlay = new NameLabelOverlay({ lat: l.lat, lng: l.lng }, labelDiv);
+      overlay.setMap(map);
+    });
+
+    renderSidebar();
+
+    // HTMLメールなど外部導線から、該当候補地を直接開けるようにする。
+    // 例: ?site=asukadai または #asukadai
+    const params = new URLSearchParams(window.location.search);
+    const requestedSite = params.get('site') || window.location.hash.replace(/^#/, '');
+    if (requestedSite && sites.some(site => site.id === requestedSite)) {
+      window.setTimeout(() => openSite(requestedSite), 250);
+    }
+  }
+
+  function openSite(id) {
+    // 他の InfoWindow を閉じる
+    Object.values(infoWindows).forEach(iw => iw.close());
+    const iw = infoWindows[id];
+    const marker = markers[id];
+    if (iw && marker) {
+      iw.open({ anchor: marker, map });
+      map.panTo(marker.getPosition());
+    }
+    document.querySelectorAll('.site-card').forEach(el => {
+      el.classList.toggle('active', el.dataset.id === id);
+    });
+  }
+
+  function renderInfoWindow(site) {
+    const factsHtml = Object.entries(site.facts)
+      .map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
+    const docsHtml = site.docs
+      .map(d => `<li><a href="${site.folder}/${d.file}" target="_blank">${d.label}</a></li>`)
+      .join('');
+    const zipHtml = site.zip
+      ? `<a class="iw-zip" href="${site.zip}" download>一式ZIPをダウンロード</a>`
+      : '';
+    return `
+      <div class="iw">
+        <div class="iw-photo" style="background-image: url('${site.photo}');"></div>
+        <div class="iw-body">
+          <div class="iw-title">${site.title}</div>
+          <div class="iw-sub">${site.subtitle}</div>
+          <dl class="iw-facts">${factsHtml}</dl>
+          <div class="iw-docs-label">DOCUMENTS</div>
+          <ul class="iw-docs">${docsHtml}</ul>
+          ${zipHtml}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderSidebar() {
+    const list = document.getElementById('site-list');
+    list.innerHTML = sites.map((s, i) => `
+      <div class="site-card" data-id="${s.id}" onclick="openSite('${s.id}')">
+        <span class="num">${i + 1}</span>
+        <span class="title">${s.title}</span>
+        <div class="meta">${s.subtitle}</div>
+        <span class="status">${s.status}</span>
+      </div>
+    `).join('');
+  }
+
+  // ライトテーマ（la CASA アイボリー基調）
+  const darkMapStyle = [
+    { elementType: 'geometry', stylers: [{ color: '#f5f2ea' }] },
+    { elementType: 'labels.text.stroke', stylers: [{ color: '#ffffff' }] },
+    { elementType: 'labels.text.fill', stylers: [{ color: '#5a544a' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#8c6f2a' }] },
+    { featureType: 'poi', elementType: 'labels.text.fill', stylers: [{ color: '#7a7468' }] },
+    { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#dce8d4' }] },
+    { featureType: 'poi.park', elementType: 'labels.text.fill', stylers: [{ color: '#5e7a58' }] },
+    { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#ffffff' }] },
+    { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#e5e1d6' }] },
+    { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#5a544a' }] },
+    { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#fff4d9' }] },
+    { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#b8944a' }] },
+    { featureType: 'transit', elementType: 'geometry', stylers: [{ color: '#ece7db' }] },
+    { featureType: 'transit.station', elementType: 'labels.text.fill', stylers: [{ color: '#8c6f2a' }] },
+    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#cfe0ec' }] },
+    { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#4a6fa5' }] },
+  ];
+</script>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAblGtLUEhqN6raMa1thk4yX1ZFwNw_3V4&callback=initMap&language=ja&region=JP">
+</script>
+
+</body>
+</html>

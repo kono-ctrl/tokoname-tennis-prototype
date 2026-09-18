@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>周辺環境調査｜常滑市 屋内テニス施設候補地</title>
+  <style>
+    :root{--ink:#171511;--paper:#f4f1ea;--gold:#b8944a;--blue:#38556b;--muted:#716b61;--line:#ded7cb;--white:#fff;--warn:#9a5c20}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Yu Gothic",Meiryo,sans-serif}
+    header{background:var(--ink);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:5}header img{width:180px;height:auto}.eyebrow{font-size:10px;letter-spacing:.16em;color:#d5c397;text-align:right}
+    main{max-width:1120px;margin:auto;padding:28px 22px 60px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.tabs a{padding:10px 13px;background:#fff;border:1px solid #bbb3a5;color:#403c37;text-decoration:none;font-size:12px;font-weight:700}.tabs a.active{background:var(--blue);border-color:var(--blue);color:#fff}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;background:#fff}.map{min-height:430px;border:0;width:100%}.summary{padding:30px;border-top:5px solid var(--gold)}.kicker{font-size:11px;color:var(--gold);font-weight:800;letter-spacing:.15em}.summary h1{font-size:29px;line-height:1.35;margin:10px 0}.lead{font-size:14px;line-height:1.85;color:var(--muted)}.status{display:inline-block;margin-top:12px;padding:7px 10px;background:#f4ead7;color:var(--warn);font-size:11px;font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}.card{background:#fff;padding:22px;border-top:3px solid var(--gold)}.card h2{font-size:16px;margin:0 0 13px}.card ul{margin:0;padding-left:18px}.card li{font-size:13px;line-height:1.75;margin:5px 0}.source{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}
+    .actions{margin-top:20px;background:#fff;padding:22px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;padding:12px 16px;background:var(--gold);color:#fff;text-decoration:none;font-size:13px;font-weight:700}.btn.secondary{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+    @media(max-width:760px){header{padding:12px 15px}header img{width:145px}.eyebrow{display:none}main{padding:16px 13px 40px}.hero{grid-template-columns:1fr}.map{min-height:330px}.summary{padding:22px}.summary h1{font-size:24px}.grid{grid-template-columns:1fr}.tabs a{flex:1;text-align:center;min-width:100px}}
+  </style>
+</head>
+<body>
+  <header><img src="assets/kumazawa-logo.jpg" alt="熊沢建設株式会社"><div class="eyebrow">企業誘致・出店支援 PROJECT TEAM<br>AREA &amp; MARKET BRIEF</div></header>
+  <main>
+    <nav class="tabs" aria-label="候補地切り替え">
+      <a data-site="asukadai" href="environment.html?site=asukadai">01 飛香台2丁目</a>
+      <a data-site="hironouchi" href="environment.html?site=hironouchi">02 字広内12番</a>
+      <a data-site="nishikicho" href="environment.html?site=nishikicho">03 錦町4丁目</a>
+    </nav>
+    <section class="hero">
+      <iframe class="map" id="map" title="候補地周辺地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="summary"><div class="kicker">周辺環境調査</div><h1 id="title"></h1><p class="lead" id="lead"></p><span class="status" id="status"></span></div>
+    </section>
+    <section class="grid" id="cards"></section>
+    <section class="actions">
+      <a class="btn" id="detailLink">候補地の詳細へ戻る</a>
+      <a class="btn secondary" href="index.html">3候補地の比較マップ</a>
+      <a class="btn secondary" id="googleLink" target="_blank" rel="noopener">Google マップで開く</a>
+    </section>
+    <p class="source">本資料はプロトタイプです。距離・人口・競合・都市計画等は、現地調査、公式統計、行政照会により最終確認します。調査済みと未調査の情報を区別して表示しています。</p>
+  </main>
+  <script>
+    const sites={
+      asukadai:{title:'常滑市飛香台2丁目 候補地',lat:34.894639,lng:136.850139,status:'既存の周辺環境調査を反映',lead:'立地・商圏・競合・技術上の検討事項を、出店判断の順番に整理しています。',cards:[['アクセス',['常滑ICから車で約3分','名鉄「常滑」駅から徒歩約24分','住宅地の中央、北条公園・旧鉄道緑地に隣接']],['商圏・ターゲット',['5km圏人口 約60,000人（既存資料の推計）','5km圏小学生 約2,300名（既存資料の推計）','通学・送迎・仕事帰りの利用動線を検討']],['要精査項目',['敷地中央の擁壁と段差への設計対応','地区計画届出と建築・色彩条件','競合施設、人口、等時間商圏の再調査']]]},
+      hironouchi:{title:'常滑市字広内12番 貸地',lat:34.893427,lng:136.844954,status:'簡易版／正式な周辺環境調査は未実施',lead:'現時点で確認できる位置と物件条件を示し、次に調べる内容を明確にしています。',cards:[['アクセス',['名鉄「常滑」駅から徒歩約15分','準工業地域','現況・入退去時期は元付へ要確認']],['次に調べる項目',['10分・15分等時間商圏の人口と年齢構成','送迎車両の進入・退出動線','近隣の屋内テニス・スポーツ施設']],['判断前の確認',['騒音・夜間照明の近隣影響','駐車台数と他用途との共用条件','借地期間と投資回収期間の適合']]]},
+      nishikicho:{title:'常滑市錦町4丁目 貸地',lat:34.895986,lng:136.840665,status:'簡易版／正式な周辺環境調査は未実施',lead:'広い敷地と三方道路の利点を踏まえ、解体・動線・商圏調査の順序を整理しています。',cards:[['アクセス',['東・南・北の三方道路','準工業地域','敷地約1,072坪']],['次に調べる項目',['主要道路からの視認性と右左折進入','10分・15分等時間商圏の人口と年齢構成','競合施設と商業集積との関係']],['判断前の確認',['既存建物の解体・更地引渡し条件','造成・地盤・基礎条件','複合利用時の駐車場と車両動線']]]}
+    };
+    const requested=new URLSearchParams(location.search).get('site');const id=sites[requested]?requested:'asukadai';const site=sites[id];
+    document.querySelectorAll('[data-site]').forEach(a=>a.classList.toggle('active',a.dataset.site===id));
+    document.getElementById('title').textContent=site.title;document.getElementById('lead').textContent=site.lead;document.getElementById('status').textContent=site.status;
+    document.getElementById('map').src=`https://www.google.com/maps?q=${site.lat},${site.lng}&z=15&output=embed`;
+    document.getElementById('cards').innerHTML=site.cards.map(([title,items])=>`<article class="card"><h2>${title}</h2><ul>${items.map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('');
+    document.getElementById('detailLink').href=`detail.html?site=${id}`;document.getElementById('googleLink').href=`https://www.google.com/maps/search/?api=1&query=${site.lat},${site.lng}`;
+    document.title=`${site.title}｜周辺環境調査`;
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>常滑市 屋内テニス施設｜候補地詳細</title>
+  <style>
+    :root{--ink:#171511;--paper:#f4f1ea;--gold:#b8944a;--muted:#6f6a61;--line:#dcd5c8;--blue:#38556b}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Yu Gothic",Meiryo,sans-serif}
+    header{background:var(--ink);color:#fff;padding:15px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:10}
+    header img{width:185px;height:auto}.eyebrow{font-size:10px;letter-spacing:.16em;color:#d5c397;text-align:right}
+    main{max-width:1120px;margin:auto;padding:30px 24px 60px}.intro{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(310px,.75fr);gap:28px;align-items:start}
+    .media{background:#111;aspect-ratio:16/9;overflow:hidden}.media img,.media video{width:100%;height:100%;display:block;object-fit:cover}
+    .panel{background:#fff;border-top:4px solid var(--gold);padding:28px}.kicker{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.15em}.panel h1{font-size:30px;line-height:1.35;margin:10px 0 12px}.lead{color:var(--muted);font-size:14px;line-height:1.85;margin:0}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.tabs a{border:1px solid #bdb6a9;background:#fff;color:#403d38;text-decoration:none;padding:10px 14px;font-size:12px;font-weight:700}.tabs a.active{background:var(--blue);border-color:var(--blue);color:#fff}
+    .facts{margin-top:28px;background:#fff;padding:26px}.facts h2,.actions h2{font-size:19px;margin:0 0 18px}.facts dl{display:grid;grid-template-columns:150px 1fr;margin:0}.facts dt,.facts dd{margin:0;padding:12px 10px;border-top:1px solid var(--line);font-size:13px;line-height:1.65}.facts dt{color:#7d766b}.facts dd{font-weight:600}
+    .actions{margin-top:22px;background:#fff;padding:26px}.action-row{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-block;background:var(--gold);color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:13px 18px}.btn.secondary{background:#fff;color:var(--blue);border:1px solid var(--blue)}.btn.environment{background:var(--blue)}
+    .note{margin-top:18px;color:#817a70;font-size:11px;line-height:1.7}.hidden{display:none!important}
+    @media(max-width:760px){header{padding:12px 16px}header img{width:150px}.eyebrow{display:none}main{padding:18px 14px 42px}.intro{grid-template-columns:1fr;gap:14px}.panel{padding:22px}.panel h1{font-size:25px}.facts,.actions{padding:20px}.facts dl{grid-template-columns:105px 1fr}.facts dt,.facts dd{padding:10px 7px}}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/kumazawa-logo.jpg" alt="熊沢建設株式会社">
+    <div class="eyebrow">企業誘致・出店支援 PROJECT TEAM<br>INTERACTIVE SITE BRIEF</div>
+  </header>
+  <main>
+    <nav class="tabs" aria-label="候補地切り替え">
+      <a data-site="asukadai" href="detail.html?site=asukadai">01 飛香台2丁目</a>
+      <a data-site="hironouchi" href="detail.html?site=hironouchi">02 字広内12番</a>
+      <a data-site="nishikicho" href="detail.html?site=nishikicho">03 錦町4丁目</a>
+    </nav>
+    <section class="intro">
+      <div class="media" id="media"></div>
+      <div class="panel">
+        <div class="kicker" id="kicker"></div>
+        <h1 id="title"></h1>
+        <p class="lead" id="lead"></p>
+      </div>
+    </section>
+    <section class="facts">
+      <h2>候補地の概要</h2>
+      <dl id="facts"></dl>
+    </section>
+    <section class="actions">
+      <h2>資料を続けて見る</h2>
+      <div class="action-row">
+        <a class="btn" id="factLink">ファクトシート</a>
+        <a class="btn secondary" id="proposalLink">出店提案資料</a>
+        <a class="btn environment" id="environmentLink">周辺環境調査</a>
+        <a class="btn" id="mapLink" target="_blank" rel="noopener">Google マップで位置を見る</a>
+        <a class="btn secondary" href="index.html">3候補地の比較マップへ戻る</a>
+      </div>
+      <p class="note">ファクトシートで条件を把握し、出店提案、周辺環境調査へ段階的に進めます。本ページはチーム確認用プロトタイプです。契約条件・法令・配置計画は、正式な調査と協議により変更となる場合があります。</p>
+    </section>
+  </main>
+  <script>
+    const sites={
+      asukadai:{kicker:'01 / 整地済・常滑IC至近',title:'常滑市飛香台2丁目 候補地',lead:'屋内テニス施設の配置を想定した完成イメージと、現況・立地条件を確認できます。',media:'<video autoplay loop muted playsinline controls poster="assets/asukadai.jpg"><source src="assets/asukadai-loop.mp4" type="video/mp4"></video>',lat:34.894639,lng:136.850139,facts:{所在:'常滑西特定土地区画整理事業内（整地済）',面積:'1,996.52㎡（約603坪）',用途地域:'準工業地域（建ぺい60%／容積200%）',契約形態:'事業用定期借地20年（地主合意済）',賃料:'1坪900円／月（月額約54.3万円・年額約651万円）',特記:'常滑IC 車約3分／名鉄常滑線「常滑」駅 徒歩約24分'}},
+      hironouchi:{kicker:'02 / 約838坪・準工業地域',title:'常滑市字広内12番 貸地',lead:'完成イメージと現況写真を通じ、土地の広がりと屋内施設の利用イメージを確認できます。',media:'<img src="assets/hironouchi.jpg" alt="常滑市字広内12番の完成イメージ">',lat:34.893427,lng:136.844954,facts:{面積:'2,765.58㎡（約838坪）',用途地域:'準工業地域（建ぺい60%／容積200%）',契約形態:'事業用借地5年（期間相談可）',最寄駅:'名鉄常滑線「常滑」駅 徒歩約15分',特記:'更地（一部貸出済。退去時期は元付に要確認）'}},
+      nishikicho:{kicker:'03 / 約1,072坪・三方道路',title:'常滑市錦町4丁目 貸地',lead:'航空写真で敷地規模と周辺道路を確認し、既存建物の扱いを含めた検討条件を整理できます。',media:'<img src="assets/nishikicho.jpg" alt="常滑市錦町4丁目の航空写真">',lat:34.895986,lng:136.840665,facts:{面積:'3,546.45㎡（約1,072坪）',用途地域:'準工業地域（建ぺい60%／容積200%）',接道:'東 県道247号 約22m／南 公道約14m／北 公道約3m',契約形態:'借地（複合構成・既存建物解体は要協議）',特記:'既存パチンコ店の解体・更地引渡しが成立条件'}}
+    };
+    const requested=new URLSearchParams(location.search).get('site');
+    const id=sites[requested]?requested:'asukadai';
+    const site=sites[id];
+    document.querySelectorAll('[data-site]').forEach(a=>a.classList.toggle('active',a.dataset.site===id));
+    document.getElementById('media').innerHTML=site.media;
+    document.getElementById('kicker').textContent=site.kicker;
+    document.getElementById('title').textContent=site.title;
+    document.getElementById('lead').textContent=site.lead;
+    document.getElementById('facts').innerHTML=Object.entries(site.facts).map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('');
+    document.getElementById('factLink').href=`${id}/factsheet.html`;
+    document.getElementById('proposalLink').href=`${id}/proposal.html`;
+    document.getElementById('environmentLink').href=`environment.html?site=${id}`;
+    document.getElementById('mapLink').href=`https://www.google.com/maps/search/?api=1&query=${site.lat},${site.lng}`;
+    document.title=`${site.title}｜屋内テニス施設候補地`;
+  </script>
+</body>
+</html>
